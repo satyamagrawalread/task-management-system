@@ -1,7 +1,16 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from crud.task_operations import add_task, get_all_tasks, task_update, task_delete
 from task_schemas import CreateTaskType, UpdateTaskType
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
 
 @app.get("/")
 def read_root():

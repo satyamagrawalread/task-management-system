@@ -40,7 +40,7 @@ class UpdateTaskType(BaseModel):
     @field_validator('status')
     @classmethod
     def status_format(cls, v: str) -> str:
-        if v==StatusEnum.todo or v==StatusEnum.in_progress or v==StatusEnum.done:
+        if v in StatusEnum._value2member_map_ or v==None:
             return v
         else:
             raise PydanticCustomError('status_format_error', 'status must be in a desired format')
