@@ -17,6 +17,6 @@ source ./backend/venv/Scripts/activate
 ### Start the backend server command:
 uvicorn backend.main:app --port 8080 --reload
 
-Assumptions:
+## Assumptions:
 Title must not be Empty
 Status will be todo by default in case no status is provided
