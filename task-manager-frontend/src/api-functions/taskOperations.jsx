@@ -1,5 +1,6 @@
 
 export async function createTask(details) {
+
     return await fetch('http://localhost:8080/api/tasks', {
         method: 'POST',
         headers: {
