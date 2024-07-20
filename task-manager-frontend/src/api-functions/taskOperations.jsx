@@ -1,7 +1,7 @@
-
+const backend_url = import.meta.env.VITE_APP_BACKEND_URL;
 export async function createTask(details) {
 
-    return await fetch('http://localhost:8080/api/tasks', {
+    return await fetch(`${backend_url}api/tasks`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ export async function createTask(details) {
 }
 
 export async function retrieveTask() {
-    return await fetch('http://localhost:8080/api/tasks', {
+    return await fetch(`${backend_url}api/tasks`, {
         method: 'GET'
     }).then((res) => {
         if(!res.ok) {
@@ -37,7 +37,7 @@ export async function retrieveTask() {
 }
 
 export async function updateTask(task_id, details) {
-    return await fetch(`http://localhost:8080/api/tasks/${task_id}`, {
+    return await fetch(`${backend_url}api/tasks/${task_id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ export async function updateTask(task_id, details) {
 }
 
 export async function deleteTask(task_id) {
-    return await fetch(`http://localhost:8080/api/tasks/${task_id}`, {
+    return await fetch(`${backend_url}api/tasks/${task_id}`, {
         method: 'DELETE',
     }).then((res) => {
         if(!res.ok) {
