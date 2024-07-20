@@ -1,10 +1,12 @@
 const backend_url = import.meta.env.VITE_APP_BACKEND_URL;
+const access_token = import.meta.env.VITE_APP_ACCESS_TOKEN;
 export async function createTask(details) {
 
     return await fetch(`${backend_url}api/tasks`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': access_token
         },
         body: JSON.stringify(details)
     }).then((res) => {
@@ -22,7 +24,11 @@ export async function createTask(details) {
 
 export async function retrieveTask() {
     return await fetch(`${backend_url}api/tasks`, {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': access_token
+        }
     }).then((res) => {
         if(!res.ok) {
             throw new Error('Internal Server Error');
@@ -40,7 +46,8 @@ export async function updateTask(task_id, details) {
     return await fetch(`${backend_url}api/tasks/${task_id}`, {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': access_token
         },
         body: JSON.stringify(details)
     }).then((res) => {
@@ -57,6 +64,10 @@ export async function updateTask(task_id, details) {
 export async function deleteTask(task_id) {
     return await fetch(`${backend_url}api/tasks/${task_id}`, {
         method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': access_token
+        }
     }).then((res) => {
         if(!res.ok) {
             throw new Error('Internal Server Error');
