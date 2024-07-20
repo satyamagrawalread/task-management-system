@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 from crud.task_operations import add_task, get_all_tasks, task_update, task_delete
 from task_schemas import CreateTaskType, UpdateTaskType
 app = FastAPI()
@@ -47,6 +48,9 @@ async def delete_task(task_id: int):
         return {"message": "Task Deleted"}
     except Exception as e:
         raise HTTPException(status_code=500, detail="Something went wrong")
+    
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=False)
 
 
 
