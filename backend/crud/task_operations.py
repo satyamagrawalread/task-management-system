@@ -3,6 +3,7 @@ from sqlalchemy import select
 from database.task_database import Session
 from task_models import Task
 
+
 def add_task(item):
     try:
         session = Session()
