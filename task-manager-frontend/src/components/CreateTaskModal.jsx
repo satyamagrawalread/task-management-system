@@ -9,7 +9,7 @@ export const CreateTaskModal = ({
 }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("todo");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmitTask = async () => {
@@ -87,7 +87,6 @@ export const CreateTaskModal = ({
               value={status}
               onChange={(e) => setStatus(e.target.value)}
             >
-              <option value="">Select status</option>
               <option value="todo">To Do</option>
               <option value="in_progress">In Progress</option>
               <option value="done">Done</option>
