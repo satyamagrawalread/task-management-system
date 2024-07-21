@@ -13,6 +13,7 @@ function App() {
   const [isUpdateTaskModalOpened, setIsUpdateTaskModalOpened] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     getTasks();
   }, [])
@@ -21,6 +22,7 @@ function App() {
 
   const getTasks = async () => {
     const result = await retrieveTask();
+    setIsLoading(false);
     setTasks(result.data);
   }
   const handleSelect = (task) => {
@@ -35,7 +37,7 @@ function App() {
         setIsModalOpened={setIsModalOpened} getTasks={getTasks} />
       <ViewTaskModal task={selectedTask} isViewTaskModalOpened={isViewTaskModalOpened} setIsViewTaskModalOpened={setIsViewTaskModalOpened} setTasks={setTasks} getTasks={getTasks} setIsUpdateTaskModalOpened={setIsUpdateTaskModalOpened} />
       <UpdateTaskModal task={selectedTask} isUpdateTaskModalOpened={isUpdateTaskModalOpened} setIsUpdateTaskModalOpened={setIsUpdateTaskModalOpened} getTasks={getTasks} />
-      {tasks.map((task, index) => (
+      {isLoading ? <div className="task-loader"><div className="loader"></div></div> : tasks.map((task, index) => (
         <div key={index}>
         
         <div className="task-item" onClick={() => handleSelect(task)}>{task.title}</div></div>
