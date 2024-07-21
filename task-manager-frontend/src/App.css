@@ -43,7 +43,7 @@
 
 .task-item {
   width: 200px;
-  border: 1px solid white;
+  border: 1px solid rgb(146, 74, 74);
   border-radius: 10px;
   margin: 10px;
   cursor: pointer;
