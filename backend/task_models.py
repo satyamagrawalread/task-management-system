@@ -16,3 +16,6 @@ class Task(Base):
     description = Column(String, nullable=True)
     status = Column(Enum(StatusEnum), default=StatusEnum.todo, nullable=False)
     created_at = Column(DateTime, default=datetime.now(timezone.utc), nullable=False)
+
+
+

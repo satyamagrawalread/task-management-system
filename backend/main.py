@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from crud.task_operations import add_task, get_all_tasks, task_update, task_delete
 from task_schemas import CreateTaskType, UpdateTaskType
+from task_models import Task
 app = FastAPI()
 
 app.add_middleware(
