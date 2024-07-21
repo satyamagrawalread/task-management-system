@@ -9,7 +9,6 @@ npm install
 npm run dev
 
 # Backend
-Open Git Bash Terminal
 
 ### Activate Virtual Environment Command:
 source ./backend/venv/Scripts/activate
